@@ -1,38 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Gloria+Hallelujah&family=Playfair+Display+SC&display=swap');
+
+
+
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: #1C1C1D;
+}
+
+
+.nav-bar-container {
+  
+  display: flex;
+  justify-content: flex-end;
+  height: 15vh;  
+  font-family: Arial;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: bold;
+  padding-bottom: .5em;
+  background-color: #262626;
+
+  border-bottom:solid 2px rgb(119, 118, 118);
+ 
+
+}
+
+
+.nav-bar-container .nav-bar-logo {
+  margin-right: auto;
+  
+  font-size: 2.5em;
+  color: #8f8e8f;
+  font-family: 'Cabin Sketch', cursive;
+  align-self: center;
+}
+
+.nav-bar-container .nav-bar-search {
+  
+  border: 0px;
+  background-color: #262626;
+  width: 20em;
+  height: 100%;
+  font-size: 2em;
   color: white;
+  
 }
 
-.App-link {
-  color: #61dafb;
+.nav-bar-container .nav-bar-search:focus {
+  outline: none;
+}
+.search-container {
+  margin-right: auto;
+ 
+}
+.search-svg {
+  font-size: 1.5em;
+  color: #7C7882;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.search-svg:hover {
+  font-size: 1.5em;
+  color:white;
 }
+.search-cancel-svg {
+  font-size: 1.5em;
+  margin-right: 1em;
+  color: #7C7882;
+}
+
+.search-cancel-svg:hover{
+  color:white;
+}
+
+
+
