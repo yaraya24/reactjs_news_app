@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Gloria+Hallelujah&family=Playfair+Display+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
 
 
 
@@ -6,7 +6,7 @@
   text-align: center;
   display: flex;
   flex-direction: column;
-  background-color: #1C1C1D;
+  background-color: #ffff8b;
 }
 
 
@@ -14,15 +14,14 @@
   
   display: flex;
   justify-content: flex-end;
-  height: 15vh;  
+  height: 70px;  
   font-family: Arial;
   font-size: 18px;
   line-height: 30px;
   font-weight: bold;
   padding-bottom: .5em;
-  background-color: #262626;
-
-  border-bottom:solid 2px rgb(119, 118, 118);
+  background-color: #ffee58;
+  
  
 
 }
@@ -30,21 +29,21 @@
 
 .nav-bar-container .nav-bar-logo {
   margin-right: auto;
-  
   font-size: 2.5em;
-  color: #8f8e8f;
-  font-family: 'Cabin Sketch', cursive;
+  color: #3f1dcb;
+  font-family: 'Francois One', sans-serif;
   align-self: center;
 }
 
 .nav-bar-container .nav-bar-search {
   
   border: 0px;
-  background-color: #262626;
+  background-color: #ffee58;
   width: 20em;
   height: 100%;
   font-size: 2em;
-  color: white;
+  color: #3f1dcb;
+  border-bottom: 1px solid #c9bc1f;
   
 }
 
@@ -62,17 +61,60 @@
 
 .search-svg:hover {
   font-size: 1.5em;
-  color:white;
-}
-.search-cancel-svg {
-  font-size: 1.5em;
-  margin-right: 1em;
-  color: #7C7882;
+  color:#7c4dff;
+  cursor: pointer;
 }
 
-.search-cancel-svg:hover{
-  color:white;
+.hamburger-svg {
+  font-size: 3rem;
+  align-self: center;
+  color: #3f1dcb;
+  padding-right: 1em;
+  padding-left: .2em;
+  cursor: pointer;
+  transition: color 0.3s linear;
+
+}
+.hamburger-svg:hover {
+  
+  color: pink;
+  
 }
 
 
+.body-div {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
 
+.side-nav-bar-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ffee58;
+  text-align: left;
+  padding: 2rem;
+  transition: transform 0.3s ease-in-out;
+  
+}
+
+.side-nav-bar-container a {
+  font-size: 2rem;
+  text-transform: uppercase;
+  padding: 2rem 0;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  text-decoration: none;
+  transition: color 0.3s linear;
+
+  }
+
+  .side-nav-bar-container a:hover {
+    color: pink;
+  }
+
+  .news-container {
+    width: 60%;
+    border: 2px solid red;
+  }
