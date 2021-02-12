@@ -8,9 +8,11 @@ const SideNavBarComponent= (props) => {
     
     return (
         <div style={!props.navbarOpen ? sidenavbarstyles : null} className="side-nav-bar-container">
+           
         <a href="#">
         General
         </a>
+        
         <a href="#">
         World News
         </a>

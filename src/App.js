@@ -2,7 +2,8 @@
 import React from 'react'
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './App.css';
-import { AnimateSharedLayout, motion } from "framer-motion"
+import Ripples from 'react-ripples' // use for buttons only
+
 
 // Importing components
 import NavBarComponent from './components/Navbar'
@@ -61,7 +62,12 @@ function App() {
           <span className="page-title">Headlines</span>
         
           {news_stories.map(item => {
-              return <NewsCardComponent id={item.id}story={item}/>
+            
+              return (
+              
+              <NewsCardComponent id={item.id}story={item}/>
+              
+              )
           })}
           
        

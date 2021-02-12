@@ -5,7 +5,8 @@ const NewsCardComponent = ({ story }) => {
     
     return (
         
-        <div className="news-card-container" >
+        <div className="news-card-container">
+            
             <div className="news-card-article-info">
 
                 <span className="article-heading">{story.heading}</span>
@@ -15,7 +16,10 @@ const NewsCardComponent = ({ story }) => {
 
             </div>
             <img className="article-image" src={story.img_url}></img>
+       
         </div>
+      
+     
 
     )
 }
