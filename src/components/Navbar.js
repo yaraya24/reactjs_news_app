@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
+import { Link } from "react-router-dom"
+
 
 
 const NavBarComponent = (props) => {
@@ -9,19 +11,34 @@ const NavBarComponent = (props) => {
         props.setNavbarOpen(props.navbarOpen)
     }
 
-    return (
-        <div className="nav-bar-container">
-        <GiHamburgerMenu className="hamburger-svg" onClick={handleSideBar}/>
-        <div  className="nav-bar-logo">uBROKE NEWS</div>
-        
-        <SearchBarComponent/>
-        
-        <strong>log in</strong>
-        <strong>sign up</strong>
-        </div>
+    const logged_in_nav = (
 
-
+        <ul>
+        <li>logout</li>
+        </ul>
     )
+
+    const logged_out_nav = (
+        <ul>
+        <li ><Link to="/login">Login</Link></li>
+        <li >Sign Up</li>
+        </ul>
+    )
+
+    
+
+return (
+    <div className="nav-bar-container">
+        <GiHamburgerMenu className="hamburger-svg" onClick={handleSideBar} />
+        <div className="nav-bar-logo">uBROKE NEWS</div>
+
+        <SearchBarComponent />
+       <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
+        
+    </div>
+
+
+)
 }
 
 const SearchBarComponent = () => {
@@ -34,12 +51,12 @@ const SearchBarComponent = () => {
 
     return (
         <div className="search-container">
-        <input type="text" placeholder="Search" className="nav-bar-search" value={searchTerm} onChange={searchChangeHandle}></input>
-        {searchTerm &&
-        <FaSearch className="search-svg"/>
-        }
-        
-        
+            <input type="text" placeholder="Search" className="nav-bar-search" value={searchTerm} onChange={searchChangeHandle}></input>
+            {searchTerm &&
+                <FaSearch className="search-svg" />
+            }
+
+
         </div>
     )
 }

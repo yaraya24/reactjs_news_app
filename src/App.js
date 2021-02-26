@@ -1,14 +1,22 @@
 
+
 import React from 'react'
-import '@trendmicro/react-sidenav/dist/react-sidenav.css';
 import './App.css';
 import Ripples from 'react-ripples' // use for buttons only
+import { Route, Switch } from "react-router-dom"
+import {ToastContainer} from 'react-toastify';
+
 
 
 // Importing components
 import NavBarComponent from './components/Navbar'
 import SideNavBarComponent from './components/SideNavBar'
 import NewsCardComponent from './components/NewsCard';
+
+//import pages
+import About from "./pages/About"
+import NotFound from "./pages/NotFound"
+import Register from "./pages/Register"
 
 const news_stories = [
   {
@@ -48,39 +56,56 @@ function App() {
 
 
   return (
+
+
+
     <div className="App">
+      <ToastContainer limit={3}/>
+
       <header className="App-header">
-        <NavBarComponent navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen}/>
-        
+        <NavBarComponent navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
+
       </header>
       <div className="body-div">
-        <SideNavBarComponent navbarOpen={navbarOpen}/>
+        <SideNavBarComponent navbarOpen={navbarOpen} />
 
-        
+        <Switch>
+        <Route exact path="/">
+          <div className="news-container">
+            <span className="page-title">Headlines</span>
 
-        <div className="news-container">
-          <span className="page-title">Headlines</span>
-        
-          {news_stories.map(item => {
-            
+            {news_stories.map(item => {
+
               return (
-              
-              <NewsCardComponent id={item.id}story={item}/>
-              
+                <NewsCardComponent id={item.id} story={item} />
               )
-          })}
-          
-       
-          
-
-        </div>
+            })}
+          </div>
+        </Route>
+        <Route path="/about">
+          <About/>
+        </Route>
         
-      
+        <Route path="/register">
+          <Register/>
+        </Route>
+        <Route path="*">
+          <NotFound/>
+        </Route>
+        </Switch>
+
+
+
+
+
+
+
       </div>
       <footer>
 
       </footer>
     </div>
+
   );
 }
 

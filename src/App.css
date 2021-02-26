@@ -3,6 +3,7 @@
 
 
 
+
 .App {
   text-align: center;
   display: flex;
@@ -73,6 +74,7 @@
   padding-left: .2em;
   cursor: pointer;
   transition: color 0.3s linear;
+  
 
 }
 .hamburger-svg:hover {
@@ -181,4 +183,15 @@
 
   .page-title {
     margin-right: auto;
+  }
+
+  .active-link {
+    color: #be69f0;
+    border-bottom: 2px solid #be69f0;
+  }
+
+  .login {
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 2em;
   }
