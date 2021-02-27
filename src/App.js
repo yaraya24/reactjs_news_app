@@ -4,7 +4,10 @@ import React from 'react'
 import './App.css';
 import Ripples from 'react-ripples' // use for buttons only
 import { Route, Switch } from "react-router-dom"
-import {ToastContainer} from 'react-toastify';
+import {ToastContainer, toast} from 'react-toastify';
+import axiosInstance from './axios'
+import { useHistory} from 'react-router-dom'
+
 
 
 
@@ -17,6 +20,8 @@ import NewsCardComponent from './components/NewsCard';
 import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Register from "./pages/Register"
+import LoginForm from "./pages/LoginForm"
+
 
 const news_stories = [
   {
@@ -48,12 +53,46 @@ const news_stories = [
 
 function App() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-
+  const [loginStatus, setLoginStatus] = React.useState()
+  const history = useHistory();
+  
+  const handleLogout = () => {
+    axiosInstance
+      .get('dj-rest-auth/logout')
+      .then((res) => {
+        console.log(res.data)
+        localStorage.removeItem('access_token')
+        toast("Successfully logged out")
+        history.push('/')
+        setLoginStatus(false)
+      }, (error) => {
+        console.log(error)
+      }
+      )
+  }
+  
   const handleNavbarOpen = () => {
     setNavbarOpen(prev => !prev)
     console.log(navbarOpen)
   }
 
+  const checkLoginStatus = () => {
+    if (localStorage.getItem('access_token')) {
+      setLoginStatus(true)
+    }
+    else {
+      setLoginStatus(false)
+    }
+  }
+  
+
+  React.useEffect(() => {
+    console.log(loginStatus)
+  },[loginStatus])
+
+  const handleLoginStatus = (status) => {
+    setLoginStatus(status)
+  }
 
   return (
 
@@ -63,7 +102,7 @@ function App() {
       <ToastContainer limit={3}/>
 
       <header className="App-header">
-        <NavBarComponent navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
+        <NavBarComponent handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
 
       </header>
       <div className="body-div">
@@ -84,6 +123,9 @@ function App() {
         </Route>
         <Route path="/about">
           <About/>
+        </Route>
+        <Route path="/login">
+          <LoginForm handleLoginStatus={handleLoginStatus}/>
         </Route>
         
         <Route path="/register">

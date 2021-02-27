@@ -14,7 +14,7 @@ const NavBarComponent = (props) => {
     const logged_in_nav = (
 
         <ul>
-        <li>logout</li>
+        <li onClick={() => props.handleLogout()}>logout</li>
         </ul>
     )
 
@@ -33,7 +33,7 @@ return (
         <div className="nav-bar-logo">uBROKE NEWS</div>
 
         <SearchBarComponent />
-       <div>{props.logged_in ? logged_in_nav : logged_out_nav}</div>;
+       <div>{props.loginStatus ? logged_in_nav : logged_out_nav}</div>;
         
     </div>
 
