@@ -6,9 +6,7 @@ import Ripples from 'react-ripples' // use for buttons only
 import { Route, Switch } from "react-router-dom"
 import {ToastContainer, toast} from 'react-toastify';
 import axiosInstance from './axios'
-import { useHistory} from 'react-router-dom'
-
-
+import { useHistory, useLocation} from 'react-router-dom'
 
 
 // Importing components
@@ -21,6 +19,7 @@ import About from "./pages/About"
 import NotFound from "./pages/NotFound"
 import Register from "./pages/Register"
 import LoginForm from "./pages/LoginForm"
+import MyAccount from './pages/MyAccount'
 
 
 const news_stories = [
@@ -53,8 +52,23 @@ const news_stories = [
 
 function App() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-  const [loginStatus, setLoginStatus] = React.useState()
+  const [showSearch, setShowSearch] = React.useState(true)
+  const location = useLocation();
+  
+  
+  React.useEffect(() => {
+    if (location.pathname === '/login') {
+      setShowSearch(true)
+      console.log('LOL')
+    }
+  },[location])
   const history = useHistory();
+
+  const usePathname = () => {
+    const location = useLocation();
+    return location.pathname;
+  }
+  
   
   const handleLogout = () => {
     axiosInstance
@@ -63,14 +77,14 @@ function App() {
         console.log(res.data)
         localStorage.removeItem('access_token')
         toast("Successfully logged out")
-        history.push('/')
+        window.location.href = '/login/';
         setLoginStatus(false)
       }, (error) => {
         console.log(error)
       }
       )
   }
-  
+
   const handleNavbarOpen = () => {
     setNavbarOpen(prev => !prev)
     console.log(navbarOpen)
@@ -78,17 +92,14 @@ function App() {
 
   const checkLoginStatus = () => {
     if (localStorage.getItem('access_token')) {
-      setLoginStatus(true)
+      return true
     }
     else {
-      setLoginStatus(false)
+      return false
     }
   }
+  const [loginStatus, setLoginStatus] = React.useState(checkLoginStatus())
   
-
-  React.useEffect(() => {
-    console.log(loginStatus)
-  },[loginStatus])
 
   const handleLoginStatus = (status) => {
     setLoginStatus(status)
@@ -102,7 +113,7 @@ function App() {
       <ToastContainer limit={3}/>
 
       <header className="App-header">
-        <NavBarComponent handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
+        <NavBarComponent showSearch={showSearch} handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
 
       </header>
       <div className="body-div">
@@ -130,6 +141,9 @@ function App() {
         
         <Route path="/register">
           <Register/>
+        </Route>
+        <Route path="/myaccount">
+          <MyAccount/>
         </Route>
         <Route path="*">
           <NotFound/>

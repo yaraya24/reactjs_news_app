@@ -52,6 +52,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginForm = (props) => {
+
     const classes = useStyles();
     const history = useHistory();
 
@@ -80,22 +81,33 @@ const LoginForm = (props) => {
                 password: formData.password,
             })
             .then((res) => {
-                console.log(res.data['key'])
-                localStorage.setItem('access_token', res.data['key'])
-                history.push('/');
-                props.handleLoginStatus(true)
-                // console.log(res);
-                // console.log(res.data);
+                console.log(res.data)
+                if (res.data['key']) {
+                    console.log(res.data['key'])
+                    localStorage.setItem('access_token', res.data['key'])
+                    window.location.href = '/';
+                    props.handleLoginStatus(true)
+                    // console.log(res);
+                    // console.log(res.data);
+            }
                 
             },  (error) => {
+                console.log(error.data)
                 for (let key in error.response.data) {
                     toast.error(error.response.data[key][0])
                 }
                 
               }
             )
+            .catch(err => {
+                console.log(err.data)
+            })
     };
+    // React.useEffect(() => {
+    //     localStorage.removeItem('access_token')
+    // }, [])
 
+  
 
     return (
         <Container component="main" maxWidth="xs">

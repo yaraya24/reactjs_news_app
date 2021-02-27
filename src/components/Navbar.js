@@ -15,13 +15,15 @@ const NavBarComponent = (props) => {
 
         <ul>
         <li onClick={() => props.handleLogout()}>logout</li>
+        <li> <Link to="/myaccount">My Profile</Link></li>
         </ul>
     )
 
     const logged_out_nav = (
         <ul>
         <li ><Link to="/login">Login</Link></li>
-        <li >Sign Up</li>
+        <li ><Link to='/register'>Sign Up</Link></li>
+        
         </ul>
     )
 
@@ -31,8 +33,8 @@ return (
     <div className="nav-bar-container">
         <GiHamburgerMenu className="hamburger-svg" onClick={handleSideBar} />
         <div className="nav-bar-logo">uBROKE NEWS</div>
-
-        <SearchBarComponent />
+        {props.showSearch ?  <SearchBarComponent /> : 'hellow there'}
+       
        <div>{props.loginStatus ? logged_in_nav : logged_out_nav}</div>;
         
     </div>
