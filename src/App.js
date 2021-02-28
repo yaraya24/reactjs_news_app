@@ -98,7 +98,7 @@ function App() {
         <Route exact path="/">
           <div className="news-container">
             <span className="page-title">Headlines</span>
-
+            
             <GeneralPage/>
             
           </div>

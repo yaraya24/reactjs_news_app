@@ -1,23 +1,16 @@
 import React from 'react'
-import NewsCardComponent from '../components/NewsCard'
-import axiosInstance from '../axios'
+import NewsCardComponent from '../components/NewsCard';
+import axiosInstance from '../axios';
 import InfiniteScroll from "react-infinite-scroll-component";
+
 
 
 
 const GeneralPage = () => {
 
     
-    const initialGeneralData = {
-        articles: [],
-        page_number: 1,
-        items: 15,
-        hasMore: true
-
-    }
 
     const [articles, setArticles] = React.useState([])
-    const [pageNumber, setPageNumber] = React.useState(1)
     const [hasMore, setHasMore] = React.useState(true)
     const [items, setItmes] = React.useState(15)
     const [offset, setOffset] = React.useState(0)
@@ -35,7 +28,7 @@ const GeneralPage = () => {
                 if (res.data.next) {
                     
                     setHasMore(true)
-                    setOffset(offset + 5)
+                    setOffset(offset + 10)
                    
                 }
                 else {
@@ -54,11 +47,12 @@ const GeneralPage = () => {
 
     
     return (
-        <>
+        
         <InfiniteScroll
         dataLength={articles.length}
         next={fetchData}
         hasMore={hasMore}
+        scrollThreshold={0.95}
         loader={<h4>Loading...</h4>}>
             
         {articles.map((item) => {
@@ -67,7 +61,7 @@ const GeneralPage = () => {
                 )
         })}
         </InfiniteScroll>
-        </>
+        
        
     )
 }
