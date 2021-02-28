@@ -15,7 +15,7 @@ const NewsCardComponent = ({ story }) => {
                 <p>{story.publish_date}</p>
 
             </div>
-            <img className="article-image" src={story.img_url}></img>
+            <img className="article-image" src={story.image_source}></img>
        
         </div>
       
