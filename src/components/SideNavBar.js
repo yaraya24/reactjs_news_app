@@ -10,33 +10,44 @@ const SideNavBarComponent= (props) => {
       const nav_items = [
         {
           id: 1,
+          path: "/feed",
+          name : "My Feed"
+        },
+
+        {
+          id: 2,
           path: "/",
           name : "General"
         },
         {
-          id: 2,
+          id: 3,
           path: "/World",
           name : "World",
         },
         {
-          id: 3,
+          id: 4,
           path: "/Politics",
           name: "Politics"
         },
         {
-          id: 4,
+          id: 5,
           path: "/Sports",
           name: "Sports"
         },
         {
-          id: 5,
+          id: 6,
           path: "/Business",
           name: "Business"
         },
         {
-          id: 6,
+          id: 7,
           path: "/Culture",
           name: "Culture"
+        },
+        {
+          id: 8,
+          path: "/saved",
+          name : "Saved"
         },
         
       ]

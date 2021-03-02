@@ -4,20 +4,15 @@ import axiosInstance from '../axios';
 import InfiniteScroll from "react-infinite-scroll-component";
 
 
-
-
-const GeneralPage = () => {
-
-    
-
+const SavedPage = () => {
     const [articles, setArticles] = React.useState([])
     const [hasMore, setHasMore] = React.useState(true)
     const [offset, setOffset] = React.useState(0)
-    
-    
+    const [removedSave, setRemovedSave] = React.useState(false)
+
     const fetchData = () => {
         axiosInstance
-        .get("/?offset=" + offset)
+        .get("/saved?offset=" + offset)
         .then(res => {
             if (res.data) {
                 // setMessages(state => [...state, newMessage])
@@ -38,15 +33,20 @@ const GeneralPage = () => {
             }
         })
     }
-    
-    React.useEffect(() => {
-        
-        fetchData() 
-    }, [])
 
-    
+    const RemoveSavedArticle = () => {
+        console.log('aDWDA')
+        setRemovedSave(prev => !prev)
+    }
+
+    React.useEffect(() => {
+        setArticles([])
+        fetchData() 
+    }, [removedSave])
+
+
     return (
-        
+
         <InfiniteScroll
         dataLength={articles.length}
         next={fetchData}
@@ -56,13 +56,12 @@ const GeneralPage = () => {
             
         {articles.map((item) => {
             return (
-                <NewsCardComponent id={item.id} story={item} />
+                <NewsCardComponent RemoveSavedArticle={RemoveSavedArticle} id={item.id} story={item} isSavePage={true}/>
                 )
         })}
         </InfiniteScroll>
-        
-       
+
     )
 }
 
-export default GeneralPage
+export default SavedPage

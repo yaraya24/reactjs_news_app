@@ -21,6 +21,7 @@ import Register from "./pages/Register"
 import LoginForm from "./pages/LoginForm"
 import MyAccount from './pages/MyAccount'
 import GeneralPage from "./pages/General"
+import SavedPage from "./pages/Saved"
 
 
 
@@ -114,8 +115,15 @@ function App() {
           <Register/>
         </Route>
         <Route path="/myaccount">
+          
           <MyAccount/>
         </Route>
+        <Route path="/saved">
+        <div className="news-container">
+          <SavedPage/>
+          </div>
+        </Route>
+
         <Route path="*">
           <NotFound/>
         </Route>
