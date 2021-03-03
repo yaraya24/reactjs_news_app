@@ -22,6 +22,7 @@ import LoginForm from "./pages/LoginForm"
 import MyAccount from './pages/MyAccount'
 import GeneralPage from "./pages/General"
 import SavedPage from "./pages/Saved"
+import UserFeed from "./pages/UserFeed"
 
 
 
@@ -31,7 +32,7 @@ function App() {
   const [showSearch, setShowSearch] = React.useState(true)
   const location = useLocation();
   
-  
+  //WANTING TO REMOVE SEARCH IN LOGIN AND REGISTER PAGES
   React.useEffect(() => {
     if (location.pathname === '/login') {
       setShowSearch(true)
@@ -94,15 +95,24 @@ function App() {
       </header>
       <div className="body-div">
         <SideNavBarComponent navbarOpen={navbarOpen} />
-
+        <div className="news-container">
         <Switch>
+        
         <Route exact path="/">
-          <div className="news-container">
+         
             <span className="page-title">Headlines</span>
             
             <GeneralPage/>
             
-          </div>
+          
+        </Route>
+        <Route path="/myfeed">
+         
+            <span className="page-title">MY  Feed</span>
+            
+            <UserFeed/>
+            
+          
         </Route>
         <Route path="/about">
           <About/>
@@ -119,15 +129,16 @@ function App() {
           <MyAccount/>
         </Route>
         <Route path="/saved">
-        <div className="news-container">
+        
           <SavedPage/>
-          </div>
+          
         </Route>
 
         <Route path="*">
           <NotFound/>
         </Route>
         </Switch>
+        </div>
 
 
 

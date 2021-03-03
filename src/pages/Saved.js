@@ -8,16 +8,14 @@ const SavedPage = () => {
     const [articles, setArticles] = React.useState([])
     const [hasMore, setHasMore] = React.useState(true)
     const [offset, setOffset] = React.useState(0)
-    const [removedSave, setRemovedSave] = React.useState(false)
+    const [removedSave, setRemovedSave] = React.useState([])
 
     const fetchData = () => {
         axiosInstance
         .get("/saved?offset=" + offset)
         .then(res => {
             if (res.data) {
-                // setMessages(state => [...state, newMessage])
                 setArticles(articles => articles.concat(res.data.results))
-                console.log(res.data.results)
                 
                 if (res.data.next) {
                     
@@ -34,15 +32,14 @@ const SavedPage = () => {
         })
     }
 
-    const RemoveSavedArticle = () => {
-        console.log('aDWDA')
-        setRemovedSave(prev => !prev)
+    const RemoveSavedArticle = (removeID) => {
+        setRemovedSave(prev => prev.concat(removeID))
     }
 
     React.useEffect(() => {
-        setArticles([])
+        
         fetchData() 
-    }, [removedSave])
+    }, [])
 
 
     return (
@@ -55,9 +52,11 @@ const SavedPage = () => {
         loader={<h4>Loading...</h4>}>
             
         {articles.map((item) => {
+            if (!removedSave.includes(item.id)) {
             return (
                 <NewsCardComponent RemoveSavedArticle={RemoveSavedArticle} id={item.id} story={item} isSavePage={true}/>
                 )
+            }
         })}
         </InfiniteScroll>
 

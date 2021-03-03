@@ -10,7 +10,7 @@ const SideNavBarComponent= (props) => {
       const nav_items = [
         {
           id: 1,
-          path: "/feed",
+          path: "/myfeed",
           name : "My Feed"
         },
 

@@ -7,7 +7,7 @@ import {toast} from 'react-toastify'
 
 
 
-const GeneralPage = () => {
+const UserFeed = () => {
 
     
 
@@ -18,7 +18,7 @@ const GeneralPage = () => {
     
     const fetchData = () => {
         axiosInstance
-        .get("/?offset=" + offset)
+        .get("/myfeed?offset=" + offset)
         .then(res => {
             if (res.data) {
                 // setMessages(state => [...state, newMessage])
@@ -75,4 +75,4 @@ const GeneralPage = () => {
     )
 }
 
-export default GeneralPage
+export default UserFeed

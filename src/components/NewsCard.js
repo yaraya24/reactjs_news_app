@@ -58,7 +58,7 @@ const NewsCardComponent = ({ story , isSavePage, RemoveSavedArticle}) => {
             .delete('/saved/del/' + article.id)
             .then((res) => {
                 
-                RemoveSavedArticle()
+                RemoveSavedArticle(article.id)
             },
             (error) => {
                 console.log(error.response)

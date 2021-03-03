@@ -200,3 +200,29 @@ body {
     margin-right: auto;
     padding-top: 2em;
   }
+
+  .account-container {
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .news_org {
+    margin: 5px;
+  }
+  .news_org_img {
+    height: 200px;
+    width: 400px
+  }
+  .topic {
+    margin: 5px;
+  }
+  .topic_img {
+    height: 200px;
+    width: 400px
+  }
+
+  .follow_button {
+    width: 50%;
+    margin: auto;
+  }
