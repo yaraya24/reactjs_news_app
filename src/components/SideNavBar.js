@@ -17,32 +17,27 @@ const SideNavBarComponent= (props) => {
         {
           id: 2,
           path: "/",
-          name : "General"
+          name : "Headlines"
         },
         {
           id: 3,
-          path: "/World",
-          name : "World",
-        },
-        {
-          id: 4,
-          path: "/Politics",
-          name: "Politics"
-        },
-        {
-          id: 5,
-          path: "/Sports",
-          name: "Sports"
-        },
-        {
-          id: 6,
-          path: "/Business",
+          path: "/business",
           name: "Business"
         },
         {
-          id: 7,
-          path: "/Culture",
+          id: 4,
+          path: "/sports",
+          name: "Sports"
+        },
+        {
+          id: 5,
+          path: "/culture",
           name: "Culture"
+        },
+        {
+          id: 7,
+          path: "/technology",
+          name: "Technology"
         },
         {
           id: 8,

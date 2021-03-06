@@ -7,8 +7,9 @@ import {toast} from 'react-toastify'
 
 
 
-const UserFeed = () => {
+const BusinessPage = () => {
 
+    
 
     const [articles, setArticles] = React.useState([])
     const [hasMore, setHasMore] = React.useState(true)
@@ -17,7 +18,7 @@ const UserFeed = () => {
     
     const fetchData = () => {
         axiosInstance
-        .get("/myfeed?offset=" + offset)
+        .get("business/?offset=" + offset)
         .then(res => {
             if (res.data) {
                 // setMessages(state => [...state, newMessage])
@@ -74,4 +75,4 @@ const UserFeed = () => {
     )
 }
 
-export default UserFeed
+export default BusinessPage

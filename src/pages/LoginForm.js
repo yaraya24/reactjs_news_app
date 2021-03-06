@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 const LoginForm = (props) => {
 
     const classes = useStyles();
-    const history = useHistory();
+    
 
     const initialFormData = Object.freeze({
         email: '',
@@ -75,6 +75,7 @@ const LoginForm = (props) => {
     const handleSubmit = (e) => {
         
         e.preventDefault();
+        localStorage.removeItem('access_token')
         axiosInstance
             .post("dj-rest-auth/login/", {
                 email: formData.email,

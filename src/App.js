@@ -4,9 +4,9 @@ import React from 'react'
 import './App.css';
 import Ripples from 'react-ripples' // use for buttons only
 import { Route, Switch } from "react-router-dom"
-import {ToastContainer, toast} from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import axiosInstance from './axios'
-import { useHistory, useLocation} from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 
 
 // Importing components
@@ -23,6 +23,10 @@ import MyAccount from './pages/MyAccount'
 import GeneralPage from "./pages/General"
 import SavedPage from "./pages/Saved"
 import UserFeed from "./pages/UserFeed"
+import SportsPage from "./pages/Sports"
+import BusinessPage from "./pages/Business"
+import CulturePage from './pages/Culture';
+import TechnologyPage from "./pages/Technology"
 
 
 
@@ -31,22 +35,22 @@ function App() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   const [showSearch, setShowSearch] = React.useState(true)
   const location = useLocation();
-  
+
   //WANTING TO REMOVE SEARCH IN LOGIN AND REGISTER PAGES
   React.useEffect(() => {
     if (location.pathname === '/login') {
       setShowSearch(true)
       console.log('LOL')
     }
-  },[location])
+  }, [location])
   const history = useHistory();
 
   const usePathname = () => {
     const location = useLocation();
     return location.pathname;
   }
-  
-  
+
+
   const handleLogout = () => {
     axiosInstance
       .get('dj-rest-auth/logout')
@@ -76,7 +80,7 @@ function App() {
     }
   }
   const [loginStatus, setLoginStatus] = React.useState(checkLoginStatus())
-  
+
 
   const handleLoginStatus = (status) => {
     setLoginStatus(status)
@@ -87,7 +91,7 @@ function App() {
 
 
     <div className="App">
-      <ToastContainer limit={3}/>
+      <ToastContainer limit={3} />
 
       <header className="App-header">
         <NavBarComponent showSearch={showSearch} handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
@@ -96,48 +100,74 @@ function App() {
       <div className="body-div">
         <SideNavBarComponent navbarOpen={navbarOpen} />
         <div className="news-container">
-        <Switch>
-        
-        <Route exact path="/">
-         
-            <span className="page-title">Headlines</span>
-            
-            <GeneralPage/>
-            
-          
-        </Route>
-        <Route path="/myfeed">
-         
-            <span className="page-title">MY  Feed</span>
-            
-            <UserFeed/>
-            
-          
-        </Route>
-        <Route path="/about">
-          <About/>
-        </Route>
-        <Route path="/login">
-          <LoginForm handleLoginStatus={handleLoginStatus}/>
-        </Route>
-        
-        <Route path="/register">
-          <Register/>
-        </Route>
-        <Route path="/myaccount">
-          
-          <MyAccount/>
-        </Route>
-        <Route path="/saved">
-        
-          <SavedPage/>
-          
-        </Route>
+          <Switch>
 
-        <Route path="*">
-          <NotFound/>
-        </Route>
-        </Switch>
+            <Route exact path="/">
+
+              <span className="page-title">Headlines</span>
+
+              <GeneralPage />
+
+
+            </Route>
+            <Route path="/myfeed">
+
+              <span className="page-title">MY  Feed</span>
+
+              <UserFeed />
+            </Route>
+            <Route path="/sports">
+
+              <span className="page-title">MY  SPORTS</span>
+
+              <SportsPage />
+
+            </Route>
+            <Route path="/business">
+
+              <span className="page-title">Business</span>
+
+              <BusinessPage />
+
+            </Route>
+            <Route path="/culture">
+
+              <span className="page-title">CULTURE</span>
+
+              <CulturePage />
+
+            </Route>
+            <Route path="/technology">
+
+              <span className="page-title">TECHNO</span>
+
+              <TechnologyPage />
+
+            </Route>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/login">
+              <LoginForm handleLoginStatus={handleLoginStatus} />
+            </Route>
+
+            <Route path="/register">
+              <Register />
+            </Route>
+            <Route path="/myaccount">
+
+              <MyAccount />
+            </Route>
+            <Route path="/saved">
+
+              <SavedPage />
+
+            </Route>
+
+            <Route path="*">
+              <NotFound />
+            </Route>
+          </Switch>
         </div>
 
 
