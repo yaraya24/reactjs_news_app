@@ -8,6 +8,8 @@ import sports from "../Images/sports.jpg"
 import finance from "../Images/finance.jpg"
 import politics from "../Images/politics.jpg"
 import technology from "../Images/technology.jpg"
+import reuters from "../Images/reuters.jpg"
+import npr from "../Images/npr.jpg"
 
 const MyAccount = () => {
 
@@ -46,8 +48,9 @@ const MyAccount = () => {
 
     return (
         <div>
-
-            <h3>News to follow</h3>
+            <div className="account-heading">
+            <h2>News to follow</h2>
+            </div>
             <div className="account-container">
 
                 <div className="news_org">
@@ -62,29 +65,45 @@ const MyAccount = () => {
                     {followedNewsOrgs.includes("The Conversation") ? <UnFollowButton name={"The Conversation"} handleFollow={handleFollow}/> : <FollowButton name={"The Conversation"} handleFollow={handleFollow}/>}
                     </div>
                 </div>
+                <div className="news_org">
+                    <img className="news_org_img" src={reuters} />
+                    <div className="follow_button">
+                    {followedNewsOrgs.includes("Reuters") ? <UnFollowButton name={"Reuters"} handleFollow={handleFollow}/> : <FollowButton name={"Reuters"} handleFollow={handleFollow}/>}
+                    </div>
+                </div>
+                <div className="news_org">
+                    <img className="news_org_img" src={npr} />
+                    <div className="follow_button">
+                    {followedNewsOrgs.includes("NPR") ? <UnFollowButton name={"NPR"} handleFollow={handleFollow}/> : <FollowButton name={"NPR"} handleFollow={handleFollow}/>}
+                    </div>
+                </div>
+            </div>
+            <div className="account-heading">
+            <h2>Topics to follow</h2>
             </div>
             <div className="account-container">
+                
 
                 <div className="topic">
-                    <img className="topic_img" src={sports} />
+                    <block>Sports</block>
                     <div className="follow_button">
                         {followedCategories.includes("Sports") ? <UnFollowButton name={"Sports"} handleFollow={handleFollow}/> : <FollowButton name={"Sports"} handleFollow={handleFollow}/>}
                     </div>
                 </div>
                 <div className="topic">
-                    <img className="topic_img" src={finance} />
+                    <block>Business</block>
                     <div className="follow_button">
-                    {followedCategories.includes("Finance") ? <UnFollowButton name={"Finance"} handleFollow={handleFollow}/> : <FollowButton name={"Finance"} handleFollow={handleFollow}/>}
+                    {followedCategories.includes("Business") ? <UnFollowButton name={"Business"} handleFollow={handleFollow}/> : <FollowButton name={"Business"} handleFollow={handleFollow}/>}
                     </div>
                 </div>
                 <div className="topic">
-                    <img className="topic_img" src={politics} />
+                    <block>Culture</block>
                     <div className="follow_button">
-                    {followedCategories.includes("Politics") ? <UnFollowButton name={"Politics"} handleFollow={handleFollow}/> : <FollowButton name={"Politics"} handleFollow={handleFollow}/>}
+                    {followedCategories.includes("Culture") ? <UnFollowButton name={"Culture"} handleFollow={handleFollow}/> : <FollowButton name={"Culture"} handleFollow={handleFollow}/>}
                     </div>
                 </div>
                 <div className="topic">
-                    <img className="topic_img" src={technology} />
+                    <block>Technology</block>
                     <div className="follow_button">
                     {followedCategories.includes("Technology") ? <UnFollowButton name={"Technology"} handleFollow={handleFollow}/> : <FollowButton name={"Technology"} handleFollow={handleFollow}/>}
                     </div>

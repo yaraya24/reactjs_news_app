@@ -209,13 +209,15 @@ body {
   }
   .news_org {
     margin: 5px;
+    padding-top: 20px;
   }
   .news_org_img {
     height: 200px;
     width: 400px
   }
   .topic {
-    margin: 5px;
+    margin: 10px;
+    padding: 10px;
   }
   .topic_img {
     height: 200px;
@@ -226,3 +228,42 @@ body {
     width: 50%;
     margin: auto;
   }
+  .topic block {
+    font-family: 'Francois One', sans-serif;
+    font-size: 4.5em;
+  }
+
+  .account-heading {
+    color: #5e49b4;
+    text-align: left;
+    font-size: 2em;
+    border-bottom: 2px solid blueviolet ;
+  }
+
+  .date-author-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .date-author-container * {
+    margin: 3px;
+  }
+  .source {
+    font-weight: bold;
+    margin-right: 5px;
+    color: rgb(68, 64, 104);
+  }
+ .news-actions {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .news-actions * {
+
+  margin: 2px;
+ }
+
+ .article-heading a {
+   text-decoration: none;
+   color: #3f1dcb;
+ }

@@ -2,6 +2,7 @@ import React from 'react'
 import axiosInstance from '../axios'
 import { useHistory} from 'react-router-dom'
 import { toast } from 'react-toastify';
+import {Link as RouterLink} from 'react-router-dom'
 
 //material-ui 
 import Avatar from '@material-ui/core/Avatar';
@@ -182,8 +183,11 @@ const Register = () => {
                     </Button>
                     <Grid container justify="flex-end">
                         <Grid item>
-                            <Link href="#" variant="body2">
-                                Already have an account? Sign in
+                            <Link variant="body2">
+                            <RouterLink to='/login'>
+                            Already have an account? Sign in
+                            </RouterLink>
+                                
                         </Link>
                         </Grid>
                     </Grid>
