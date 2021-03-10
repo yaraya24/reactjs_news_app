@@ -15,7 +15,7 @@ import SideNavBarComponent from './components/SideNavBar'
 import NewsCardComponent from './components/NewsCard';
 
 //import pages
-import About from "./pages/About"
+
 import NotFound from "./pages/NotFound"
 import Register from "./pages/Register"
 import LoginForm from "./pages/LoginForm"
@@ -143,9 +143,6 @@ function App() {
 
               <TechnologyPage />
 
-            </Route>
-            <Route path="/about">
-              <About />
             </Route>
             <Route path="/login">
               <LoginForm handleLoginStatus={handleLoginStatus} />

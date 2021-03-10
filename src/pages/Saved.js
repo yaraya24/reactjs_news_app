@@ -2,6 +2,7 @@ import React from 'react'
 import NewsCardComponent from '../components/NewsCard';
 import axiosInstance from '../axios';
 import InfiniteScroll from "react-infinite-scroll-component";
+import {toast} from 'react-toastify'
 
 
 const SavedPage = () => {
