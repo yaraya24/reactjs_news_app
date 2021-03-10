@@ -1,12 +1,14 @@
-FROM node:14.16.0-alpine
+FROM node:14.16.0-alpine as build
 
 WORKDIR /frontend
 
-ENV PATH /app/node_modules/.bin:$PATH
+COPY ./frontend/package.json ./
+COPY ./frontend/package-lock.json ./
+RUN npm ci --silent
 
-COPY package.json ./
-COPY package-lock.json ./
-RUN npm install
+COPY ./frontend /frontend
+RUN npm run build
 
-COPY . /frontend
-
+FROM nginx:stable-alpine
+COPY --from=build /frontend/build /usr/share/nginx/html
+CMD ["nginx", "-g", "daemon off;"]

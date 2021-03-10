@@ -39,7 +39,8 @@ const UserFeed = () => {
             }
         },(error) => {
             if (error) {
-                if (error.response.status === 403) {
+                if (error.response.status === 403 || error.response.status === 401) {
+                    localStorage.removeItem('access_token')
                     history.push('/login')
                     toast.warn("Login is required")
                 }

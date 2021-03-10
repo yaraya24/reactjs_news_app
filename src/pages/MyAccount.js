@@ -25,6 +25,14 @@ const MyAccount = () => {
                 SetFollowedCategories(res.data.follow_category_list)
                 setFollowedNewsOrgs(res.data.follow_news_org_list)
 
+            },(error) => {
+                if (error) {
+                    if (error.response.status === 403 || error.response.status === 401) {
+                        localStorage.removeItem('access_token')
+                        window.location.href = '/login'
+                    }
+                }
+                
             })
     }
 
