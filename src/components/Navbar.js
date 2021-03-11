@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
-import { Link } from "react-router-dom"
+import { Link, useHistory} from "react-router-dom"
+
 
 
 
@@ -33,7 +34,7 @@ return (
     <div className="nav-bar-container">
         <GiHamburgerMenu className="hamburger-svg" onClick={handleSideBar} />
         <div className="nav-bar-logo">uBROKE NEWS</div>
-        {props.showSearch ?  <SearchBarComponent /> : 'hellow there'}
+        <SearchBarComponent searchHandle={props.searchHandle}/>
        
        <div>{props.loginStatus ? logged_in_nav : logged_out_nav}</div>;
         
@@ -43,17 +44,27 @@ return (
 )
 }
 
-const SearchBarComponent = () => {
+const SearchBarComponent = (props) => {
 
     const [searchTerm, setSearchTerm] = React.useState('')
+    const history = useHistory();
 
     const searchChangeHandle = event => {
         setSearchTerm(event.target.value)
     }
 
+    const searchSubmitHandle = event => {
+        if (event.keyCode === 13) {
+            console.log('enter')
+            props.searchHandle(searchTerm)
+            history.push('/search')
+        }
+    }
+
     return (
         <div className="search-container">
-            <input type="text" placeholder="Search" className="nav-bar-search" value={searchTerm} onChange={searchChangeHandle}></input>
+            
+            <input type="text" placeholder="Search" className="nav-bar-search" value={searchTerm} onChange={searchChangeHandle} onKeyDown={(e) => searchSubmitHandle(e) }></input>
             {searchTerm &&
                 <FaSearch className="search-svg" />
             }

@@ -4,10 +4,6 @@ import Button from '@material-ui/core/Button';
 
 import guardian from "../Images/guardian.jpg"
 import conversation from "../Images/conversation.jpg"
-import sports from "../Images/sports.jpg"
-import finance from "../Images/finance.jpg"
-import politics from "../Images/politics.jpg"
-import technology from "../Images/technology.jpg"
 import reuters from "../Images/reuters.jpg"
 import npr from "../Images/npr.jpg"
 

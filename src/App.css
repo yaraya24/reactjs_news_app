@@ -267,3 +267,14 @@ body {
    text-decoration: none;
    color: #3f1dcb;
  }
+ .error_heading {
+  color: #3f1dcb;
+
+ }
+
+ .page-title {
+  color: #664ec4;
+  text-align: left;
+  font-size: 3em;
+  border-bottom: 2px solid blueviolet ;
+ }

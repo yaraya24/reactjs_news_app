@@ -2,17 +2,16 @@
 
 import React from 'react'
 import './App.css';
-import Ripples from 'react-ripples' // use for buttons only
 import { Route, Switch } from "react-router-dom"
 import { ToastContainer, toast } from 'react-toastify';
 import axiosInstance from './axios'
-import { useHistory, useLocation } from 'react-router-dom'
+
 
 
 // Importing components
 import NavBarComponent from './components/Navbar'
 import SideNavBarComponent from './components/SideNavBar'
-import NewsCardComponent from './components/NewsCard';
+
 
 //import pages
 
@@ -27,28 +26,15 @@ import SportsPage from "./pages/Sports"
 import BusinessPage from "./pages/Business"
 import CulturePage from './pages/Culture';
 import TechnologyPage from "./pages/Technology"
-
+import SearchPage from "./pages/Search"
 
 
 
 function App() {
   const [navbarOpen, setNavbarOpen] = React.useState(false)
-  const [showSearch, setShowSearch] = React.useState(true)
-  const location = useLocation();
+  const [searchQuery, setSearchQuery] = React.useState('')
 
-  //WANTING TO REMOVE SEARCH IN LOGIN AND REGISTER PAGES
-  React.useEffect(() => {
-    if (location.pathname === '/login') {
-      setShowSearch(true)
-      console.log('LOL')
-    }
-  }, [location])
-  const history = useHistory();
-
-  const usePathname = () => {
-    const location = useLocation();
-    return location.pathname;
-  }
+ 
 
 
   const handleLogout = () => {
@@ -58,7 +44,7 @@ function App() {
         console.log(res.data)
         localStorage.removeItem('access_token')
         toast("Successfully logged out")
-        window.location.href = '/login/';
+        window.location.href = '/';
         setLoginStatus(false)
       }, (error) => {
         console.log(error)
@@ -69,6 +55,11 @@ function App() {
   const handleNavbarOpen = () => {
     setNavbarOpen(prev => !prev)
     console.log(navbarOpen)
+  }
+
+  const searchHandle = (query) => {
+    setSearchQuery(query)
+
   }
 
   const checkLoginStatus = () => {
@@ -94,7 +85,7 @@ function App() {
       <ToastContainer limit={3} />
 
       <header className="App-header">
-        <NavBarComponent showSearch={showSearch} handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
+        <NavBarComponent searchHandle={searchHandle} handleLogout={handleLogout} loginStatus={loginStatus} navbarOpen={navbarOpen} setNavbarOpen={handleNavbarOpen} />
 
       </header>
       <div className="body-div">
@@ -110,15 +101,21 @@ function App() {
 
 
             </Route>
+            <Route path="/search">
+
+              <span className="page-title">SEARCH Results</span>
+
+              <SearchPage query={searchQuery}/>
+            </Route>
             <Route path="/myfeed">
 
-              <span className="page-title">MY  Feed</span>
+              <span className="page-title">Feed</span>
 
               <UserFeed />
             </Route>
             <Route path="/sports">
 
-              <span className="page-title">MY  SPORTS</span>
+              <span className="page-title">Sports</span>
 
               <SportsPage />
 
@@ -132,14 +129,14 @@ function App() {
             </Route>
             <Route path="/culture">
 
-              <span className="page-title">CULTURE</span>
+              <span className="page-title">Culture</span>
 
               <CulturePage />
 
             </Route>
             <Route path="/technology">
 
-              <span className="page-title">TECHNO</span>
+              <span className="page-title">Technology</span>
 
               <TechnologyPage />
 
