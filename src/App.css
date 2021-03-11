@@ -29,6 +29,7 @@ body {
   width: 100%;
   background-color: #fafafa;
   border-bottom: 1px solid #3f1dcb;
+  z-index: 1;
  
   
  
@@ -277,4 +278,5 @@ body {
   text-align: left;
   font-size: 3em;
   border-bottom: 2px solid blueviolet ;
+  padding-bottom: 3px;
  }

@@ -36,7 +36,6 @@ function App() {
 
  
 
-
   const handleLogout = () => {
     axiosInstance
       .get('dj-rest-auth/logout')
@@ -61,6 +60,12 @@ function App() {
     setSearchQuery(query)
 
   }
+
+  React.useEffect(() => {
+    console.log(searchQuery)
+
+
+  }, [searchQuery])
 
   const checkLoginStatus = () => {
     if (localStorage.getItem('access_token')) {
@@ -103,7 +108,7 @@ function App() {
             </Route>
             <Route path="/search">
 
-              <span className="page-title">SEARCH Results</span>
+              <span className="page-title">Search Results</span>
 
               <SearchPage query={searchQuery}/>
             </Route>

@@ -55,10 +55,14 @@ const SearchBarComponent = (props) => {
 
     const searchSubmitHandle = event => {
         if (event.keyCode === 13) {
-            console.log('enter')
             props.searchHandle(searchTerm)
             history.push('/search')
         }
+    }
+
+    const submitSearchByClick = () => {
+        props.searchHandle(searchTerm)
+        history.push('/search')
     }
 
     return (
@@ -66,7 +70,7 @@ const SearchBarComponent = (props) => {
             
             <input type="text" placeholder="Search" className="nav-bar-search" value={searchTerm} onChange={searchChangeHandle} onKeyDown={(e) => searchSubmitHandle(e) }></input>
             {searchTerm &&
-                <FaSearch className="search-svg" />
+                <FaSearch className="search-svg" onClick={() => submitSearchByClick()}/>
             }
 
 

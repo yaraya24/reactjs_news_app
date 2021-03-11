@@ -88,8 +88,7 @@ const LoginForm = (props) => {
                     localStorage.setItem('access_token', res.data['key'])
                     window.location.href = '/';
                     props.handleLoginStatus(true)
-                    // console.log(res);
-                    // console.log(res.data);
+                    
             }
                 
             },  (error) => {
@@ -104,9 +103,6 @@ const LoginForm = (props) => {
                 console.log(err.data)
             })
     };
-    // React.useEffect(() => {
-    //     localStorage.removeItem('access_token')
-    // }, [])
 
   
 

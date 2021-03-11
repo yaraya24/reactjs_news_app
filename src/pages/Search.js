@@ -14,6 +14,7 @@ const SearchPage = (props) => {
     const [articles, setArticles] = React.useState([])
     const [hasMore, setHasMore] = React.useState(true)
     const [offset, setOffset] = React.useState(0)
+    const [query, setQuery] = React.useState(props.query)
    
     
     const fetchData = () => {
@@ -22,7 +23,6 @@ const SearchPage = (props) => {
         .get("/search/?offset=" + offset + '&search=' + props.query)
         .then(res => {
             if (res.data) {
-                // setMessages(state => [...state, newMessage])
                 setArticles(articles => articles.concat(res.data.results))
                 
                 
@@ -51,8 +51,10 @@ const SearchPage = (props) => {
     }
     
     React.useEffect(() => {
-        
+        setArticles([])
         fetchData() 
+
+
     }, [props.query])
 
     
