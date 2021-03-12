@@ -1,6 +1,5 @@
 import React from 'react'
 import axiosInstance from '../axios'
-import { useHistory} from 'react-router-dom'
 import { toast } from 'react-toastify';
 import {Link as RouterLink} from 'react-router-dom'
 
@@ -19,6 +18,7 @@ import Container from '@material-ui/core/Container';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 function Copyright() {
+    // Material-UI component for copyright effect
     return (
         <Typography variant="body2" color="textSecondary" align="center">
             {'Copyright © '}
@@ -32,6 +32,7 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
+    // CSS styling as per material ui specifications
     paper: {
         marginTop: theme.spacing(12),
         display: 'flex',
@@ -65,6 +66,7 @@ const LoginForm = (props) => {
     const [formData, setFormData] = React.useState(initialFormData);
 
     const handleChange = (e) => {
+        // Function that sets the form values
         setFormData({
             ...formData,
             [e.target.name]: e.target.value.trim(),
@@ -73,7 +75,7 @@ const LoginForm = (props) => {
 
 
     const handleSubmit = (e) => {
-        
+        // Function that will send login details to API endpoint and update localstorage
         e.preventDefault();
         localStorage.removeItem('access_token')
         axiosInstance

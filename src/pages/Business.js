@@ -15,6 +15,7 @@ const BusinessPage = () => {
     const [offset, setOffset] = React.useState(0)
 
     const fetchData = () => {
+        // Axios reuqest for business articles with pagination
         axiosInstance
             .get("business/?offset=" + offset)
             .then(res => {

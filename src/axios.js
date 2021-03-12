@@ -3,6 +3,7 @@ import axios from 'axios';
 const baseURL = window.location.origin + '/api/v1/';
 
 const axiosInstance = axios.create({
+    // axios instance that will send requests to API endpoints and provide authentication
     baseURL: baseURL,
     timeout: 5000,
     headers: {

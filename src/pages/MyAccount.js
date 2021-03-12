@@ -15,6 +15,7 @@ const MyAccount = () => {
 
 
     const fetchData = () => {
+        // Axios call to get profile information on the user
         axiosInstance
             .get("/profile")
             .then(res => {
@@ -38,6 +39,7 @@ const MyAccount = () => {
     }, []);
 
     const handleFollow = (element_name) => {
+        // Function that will update the follow status of a category or news organisation
         
         axiosInstance
             .patch("/profile/", { [element_name]: 1 })

@@ -65,6 +65,7 @@ const Register = () => {
     const [formData, setFormData] = React.useState(initialFormData);
 
     const handleChange = (e) => {
+        // Sets the values of the forms
         setFormData({
             ...formData,
             [e.target.name]: e.target.value.trim(),
@@ -73,6 +74,7 @@ const Register = () => {
 
 
     const handleSubmit = (e) => {
+        // Submits registraion data to API endpoint to register a user
         
         e.preventDefault();
         axiosInstance
@@ -85,8 +87,6 @@ const Register = () => {
             .then((res) => {
                 toast.success("User has been created.")
                 history.push('/login');
-                // console.log(res);
-                // console.log(res.data);
                 
             },  (error) => {
                 for (let key in error.response.data) {

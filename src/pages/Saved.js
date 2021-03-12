@@ -12,6 +12,7 @@ const SavedPage = () => {
     const [removedSave, setRemovedSave] = React.useState([])
 
     const fetchData = () => {
+        // Fetches saved articles by the user
         axiosInstance
         .get("/saved?offset=" + offset)
         .then(res => {
@@ -43,6 +44,7 @@ const SavedPage = () => {
     }
 
     const RemoveSavedArticle = (removeID) => {
+        // Remvoes the article from the render if user clicks remove
         setRemovedSave(prev => prev.concat(removeID))
     }
 

@@ -13,6 +13,7 @@ const CulturePage = () => {
     const [offset, setOffset] = React.useState(0)
 
     const fetchData = () => {
+        // Axios reuqest for culture articles with pagination
         axiosInstance
             .get("culture/?offset=" + offset)
             .then(res => {

@@ -12,6 +12,7 @@ const GeneralPage = () => {
     const [offset, setOffset] = React.useState(0)
 
     const fetchData = () => {
+        // Axios reuqest for headline articles with pagination
         axiosInstance
             .get("/?offset=" + offset)
             .then(res => {

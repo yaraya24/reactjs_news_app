@@ -18,6 +18,7 @@ const SearchPage = (props) => {
    
     
     const fetchData = () => {
+        // Fetches articles based on search query from search bar
         
         axiosInstance
         .get("/search/?offset=" + offset + '&search=' + props.query)
@@ -51,6 +52,7 @@ const SearchPage = (props) => {
     }
     
     React.useEffect(() => {
+        // Effect hook to update article list if search query changes
         setArticles([])
         fetchData() 
 

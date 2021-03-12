@@ -11,6 +11,7 @@ const NewsCardComponent = ({ story, isSavePage, RemoveSavedArticle }) => {
     const history = useHistory();
 
     const handleLike = (e) => {
+        // Function that will update that like status of an article
         axiosInstance
             .patch('/' + story.id + '/', { "like": 1 })
             .then((res) => {
@@ -32,6 +33,7 @@ const NewsCardComponent = ({ story, isSavePage, RemoveSavedArticle }) => {
     }
 
     const handleSave = () => {
+        // Function that will update the save status of an article
         axiosInstance
             .patch('/' + story.id + '/', { "save": 1 })
             .then((res) => {

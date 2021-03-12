@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { Link, useHistory} from "react-router-dom"
@@ -7,13 +7,13 @@ import { Link, useHistory} from "react-router-dom"
 
 
 const NavBarComponent = (props) => {
-
     const handleSideBar = () => {
+        // Function that will update visibility status of the navbar
         props.setNavbarOpen(props.navbarOpen)
     }
 
     const logged_in_nav = (
-
+        // Rendering for a logged in user
         <ul>
         <li onClick={() => props.handleLogout()}>logout</li>
         <li> <Link to="/myaccount">My Profile</Link></li>
@@ -21,6 +21,7 @@ const NavBarComponent = (props) => {
     )
 
     const logged_out_nav = (
+        // Rendering for a logged out user
         <ul>
         <li ><Link to="/login">Login</Link></li>
         <li ><Link to='/register'>Sign Up</Link></li>
@@ -50,10 +51,12 @@ const SearchBarComponent = (props) => {
     const history = useHistory();
 
     const searchChangeHandle = event => {
+        // Function that will set the serach term and thus search field equal to text field
         setSearchTerm(event.target.value)
     }
 
     const searchSubmitHandle = event => {
+        // Function that will send seqrch query to search page when user clicks enter
         if (event.keyCode === 13) {
             props.searchHandle(searchTerm)
             history.push('/search')
@@ -61,6 +64,7 @@ const SearchBarComponent = (props) => {
     }
 
     const submitSearchByClick = () => {
+        // function that will send search query to search page when clicking svg
         props.searchHandle(searchTerm)
         history.push('/search')
     }

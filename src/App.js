@@ -31,12 +31,14 @@ import SearchPage from "./pages/Search"
 
 
 function App() {
+  // States for navigation bar status and search query
   const [navbarOpen, setNavbarOpen] = React.useState(false)
   const [searchQuery, setSearchQuery] = React.useState('')
 
- 
+
 
   const handleLogout = () => {
+    // Function that will logout the user and remove the token localstorage
     axiosInstance
       .get('dj-rest-auth/logout')
       .then((res) => {
@@ -52,11 +54,12 @@ function App() {
   }
 
   const handleNavbarOpen = () => {
+    // Sets the navbar status once hamburger is clicked
     setNavbarOpen(prev => !prev)
-    console.log(navbarOpen)
   }
 
   const searchHandle = (query) => {
+    //Sets the search query from the search bar
     setSearchQuery(query)
 
   }
@@ -68,6 +71,7 @@ function App() {
   }, [searchQuery])
 
   const checkLoginStatus = () => {
+    //determines if user is logged in or not
     if (localStorage.getItem('access_token')) {
       return true
     }
@@ -79,13 +83,11 @@ function App() {
 
 
   const handleLoginStatus = (status) => {
+    //Function to update login status
     setLoginStatus(status)
   }
 
   return (
-
-
-
     <div className="App">
       <ToastContainer limit={3} />
 
@@ -110,7 +112,7 @@ function App() {
 
               <span className="page-title">Search Results</span>
 
-              <SearchPage query={searchQuery}/>
+              <SearchPage query={searchQuery} />
             </Route>
             <Route path="/myfeed">
 
@@ -168,12 +170,6 @@ function App() {
             </Route>
           </Switch>
         </div>
-
-
-
-
-
-
 
       </div>
       <footer>
