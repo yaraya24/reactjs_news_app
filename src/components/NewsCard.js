@@ -55,6 +55,7 @@ const NewsCardComponent = ({ story, isSavePage, RemoveSavedArticle }) => {
     }
 
     const handleRemoveSave = () => {
+        // Function that will remove an article from being saved 
         console.log(article.id)
         axiosInstance
             .delete('/saved/del/' + article.id)
